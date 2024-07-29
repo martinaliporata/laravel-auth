@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -22,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,7 +32,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // data e name son customizzati perché in create non ci sono dato che obv li cro io e ora
+        $data =$request->all();
+        $data['author']=Auth::user()->name;
+        $data['date']=Carbon::now();
+        // uso fillable - guarda in model
+        $newProject= new Project($data);
+
+        return redirect()->route('admin.projects.show', $newProject);
     }
 
     /**
