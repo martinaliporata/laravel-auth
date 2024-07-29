@@ -14,13 +14,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($project as $projects)
+                @foreach ($projects as $project)
                     <tr>
                         <td>{{$project->id}}</td>
                         <td>{{$project->title}}</td>
                         <td>{{$project->date}}</td>
                         <td>{{$project->author}}</td>
                         <td>{{$project->preview}}</td>
+                        <td>
+                            <a href="" class="btn btn-primary btn-sm">Show</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
