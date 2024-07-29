@@ -24,10 +24,6 @@
                 <input type="reset" value="Reset form" class="btn btn-danger">
             </form>
         </div>
-        <h1>{{$project->id}}:{{$project->title}}</h1>
-        <h2>{{$project->date}}</h2>
-        <h2>{{$project->author}}</h2>
-        <p>{{$project->preview}}</p>
     </div>
 </div>
 @endsection

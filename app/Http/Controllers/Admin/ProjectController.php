@@ -38,8 +38,9 @@ class ProjectController extends Controller
         $data['date']=Carbon::now();
         // uso fillable - guarda in model
         $newProject= new Project($data);
+        $newProject->save();
 
-        return redirect()->route('admin.projects.show', $newProject);
+        return redirect()->route('admin.projects.show', $newProject->id);
     }
 
     /**
