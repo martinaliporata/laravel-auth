@@ -18,11 +18,11 @@
                     <tr>
                         <td>{{$project->id}}</td>
                         <td>{{$project->title}}</td>
-                        <td>{{$project->date}}</td>
+                        <td><em>{{$project->date}}</em></td>
                         <td>{{$project->author}}</td>
                         <td>{{$project->preview}}</td>
                         <td>
-                            <a href="" class="btn btn-primary btn-sm">Show</a>
+                            <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary btn-sm">Show</a>
                         </td>
                     </tr>
                 @endforeach
