@@ -24,6 +24,11 @@
                         <td>
                             <a href="{{route('admin.projects.show', $project)}}" class="btn btn-success btn-sm">Show</a>
                             <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-primary btn-sm">Edit</a>
+                            <form action="{{route('admin.projects.destroy', $project)}}" method="POST" class="d-inline-block">
+                                @method("delete")
+                                @csrf
+                                <input type="submit" class="btn btn-warning btn-sm form-destroyer" value="Delete">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -32,4 +37,8 @@
         {{$projects->links()}}
     </div>
 </div>
+@endsection
+
+@section('additional-scripts')
+    @vite('resources/js/projects/delete-confirmation.js')
 @endsection

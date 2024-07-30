@@ -11,6 +11,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    // con la soft deletes - guarda anche il model - si popola il deleted_at nel db
     public function up(): void
     {
         Schema::create('projects', function (Blueprint $table) {
@@ -19,8 +21,8 @@ return new class extends Migration
             $table->string('author');
             $table->dateTime('date');
             $table->text('preview');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
