@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects=Project::orderBy('date', 'DESC')->get();
+        // guarda in appServiceProvider la pagination - ne voglio 10 a pagina
+        $projects=Project::paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -24,16 +26,18 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $project = new Project();
+        return view('admin.projects.create', compact('project'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
         // data e name son customizzati perché in create non ci sono dato che obv li cro io e ora
-        $data =$request->all();
+        $data =$request->validated();
+
         $data['author']=Auth::user()->name;
         $data['date']=Carbon::now();
         // uso fillable - guarda in model

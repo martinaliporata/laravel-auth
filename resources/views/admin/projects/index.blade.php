@@ -22,7 +22,8 @@
                         <td>{{$project->author}}</td>
                         <td>{{$project->preview}}</td>
                         <td>
-                            <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary btn-sm">Show</a>
+                            <a href="{{route('admin.projects.show', $project)}}" class="btn btn-success btn-sm">Show</a>
+                            <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-primary btn-sm">Edit</a>
                         </td>
                     </tr>
                 @endforeach
